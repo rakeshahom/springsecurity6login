@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Registration</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container mt-5">
+		<!-- Display Messages -->
+		<div th:if="${message}" class="alert alert-success" role="alert">
+			<span th:text="${message}"></span>
+		</div>
+
+		<!-- Registration Form -->
+		<form th:action="@{/registration}" method="post" role="form" th:object="${user}">
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" th:field="*{email}" class="form-control" id="email" name="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" th:field="*{password}" class="form-control" id="password" name="password" required>
+			</div>
+
+			<div class="form-group">
+				<label for="role">Role</label>
+				<select class="form-control" th:field="*{role}" id="role" name="role" required>
+					<option value="USER">User</option>
+					<option value="ADMIN">Admin</option>
+					<!-- Add more roles as needed -->
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="fullname">Full Name</label>
+				<input type="text" th:field="*{fullname}" class="form-control" id="fullname" name="fullname" required>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+	</div>
+
+	<!-- Bootstrap JS and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
